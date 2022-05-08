@@ -32,7 +32,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 	<title>Document</title>
-	
+
 </head>
 <body>
         <?php
@@ -137,13 +137,12 @@
 		    
 		    
 		    
-	    
 		  	</div>
 		</div>
 	</div>
 		
 		
-	    
+	<div style = "padding-bottom: 200px"></div>				
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
