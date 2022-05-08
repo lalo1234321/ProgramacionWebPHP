@@ -37,7 +37,7 @@
 <body>
         <?php
         	require_once 'includes/header.php';
-		$tipoDeRol = "admin";	
+		$tipoDeRol = "lector";	
         ?>
 	
 
