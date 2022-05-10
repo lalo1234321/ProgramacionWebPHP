@@ -3,7 +3,7 @@
 $servidor = "localhost";
 $usuarioBD = "root";
 $pwdBD = "";
-$nomBD = "";
+$nomBD = "basedatos";
 
 
 $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);

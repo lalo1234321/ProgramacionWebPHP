@@ -2,21 +2,22 @@
 <html lang="es">
 
 <head>
-    <title>Rome Blog</title>
-    <link rel="icon" type="image/png" href="../../img/icono.png" />
+    <title>Sitio Web</title>
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/includes.css">
-    <link rel="stylesheet" href="/css/homePage.css">
+    <link rel="stylesheet" href="includes/header.css">
+    <!--<link rel="stylesheet" href="includes/footer.css">-->
+    <link rel="stylesheet" href="css/homePage.css">
     
     
-    <style>
+   <style>
     .formu{
-        max-width:50%;
+        max-width:40%;
         margin: 0 auto;
     }
 
@@ -27,7 +28,6 @@
     }
 
     </style>
-     
     
 </head>
 
@@ -42,13 +42,16 @@
     <div >
         
     </div>
+    
+    <div>
+
+    
     <div class="formu border border-warning rounded-lg" >
         <div class="formu">
             <h1>Iniciar sesion</h1>
-            <h6 class="text-muted">Aun no tengo una cuenta? <u><a href="registroinicial.php" class="text-muted">Registrarme</a> </u></h6>
             
         </div>
-
+   
         <!--Formulario-->
         <div id="formulario">
 
