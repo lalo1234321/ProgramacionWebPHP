@@ -52,7 +52,7 @@
         <!--Formulario-->
         <div id="formulario">
 
-              <form action="logincheck.php" class="contenedor" >
+              <form action="Logincheck.php" class="contenedor" >
 
               <div id="formdatos" class="form-group"> 
 

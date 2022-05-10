@@ -12,13 +12,13 @@ $correo = $_GET["correo"];
 $password = $_GET["pass"];
 
 
-$sql = "SELECT id_usuario,password,rol,correo  from Usuarios where correo='" . $correo . "'";
+$sql = "SELECT id_usuario,password,rol,correo  from usuarioss where correo='" . $correo . "'";
 $result = mysqli_query($db, $sql);
 $numero_filas = mysqli_num_rows($result);
 
 if ($numero_filas == 0) {
 	echo "El usuario que ingresaste es incorrecto";
-	header("Location: login.php");
+	header("Location: Login.php");
 	die();
 } else {
 
@@ -33,7 +33,7 @@ if ($password == $mostrar['password']) {
 	$_SESSION["id_usuario"] = $id_usuario;
 
 
-	header("Location: home.php");
+	header("Location: homePage.php");
 	die();
 } else {
 	echo "Contraseña incorrecta";
