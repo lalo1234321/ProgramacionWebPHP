@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <title>Rome Blog</title>
     <link rel="icon" type="image/png" href="../../img/icono.png" />
@@ -12,25 +11,20 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/includes.css">
     <link rel="stylesheet" href="/css/homePage.css">
-    
+    <link rel="stylesheet" href="./includes/header.css">
     
     <style>
     .formu{
         max-width:50%;
         margin: 0 auto;
     }
-
     .contenedor {
                   
         display: flex;
         justify-content: center;
     }
-
     </style>
-     
-    
 </head>
-
 <body >
     <!--HEADER-->
     <?php include("./includes/header.php")?>
@@ -38,45 +32,30 @@
     <br>
 
     <!--Cuerpo-->
-
-    <div >
-        
+    <div >    
     </div>
     <div class="formu border border-warning rounded-lg" >
         <div class="formu">
-            <h1>Resgístrate</h1>
-            <!--<h6 class="text-muted">Aun no tengo una cuenta? <u><a href="registroinicial.php" class="text-muted">Registrarme</a> </u></h6>-->
-            
+            <h1>Resgístrate</h1>            
         </div>
 
         <!--Formulario-->
         <div id="formulario">
-
-              <form action="registrosCheck.php" class="contenedor" >
-
-              <div id="formdatos" class="form-group"> 
-
-                  <label for="correo">Correo:</label><br>
-                  <input type="text" id="correo" name="correo" required><br>                  
-                  <label for="pass">Contraseña:</label>
-                  <p class="text-muted"><small>Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres</small></p>
-                  <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
-                  <label for="pass">Repite la contraseña:</label><br>
-                  <input type="password" id="pass2" name="passC" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
-                  <br>
-                  <input type="submit" value="Aceptar" class="btn btn-warning my-2 my-sm-0">
-
-              </div>    
-              
-           
-              
-              
+            <form action="registrosCheck.php" class="contenedor">
+                <div id="formdatos" class="form-group"> 
+                    <label for="correo">Correo:</label><br>
+                    <input type="text" id="correo" name="correo" required><br>                  
+                    <label for="pass">Contraseña:</label>
+                    <p class="text-muted"><small>Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres</small></p>
+                    <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
+                    <label for="pass">Repite la contraseña:</label><br>
+                    <input type="password" id="pass2" name="passC" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
+                    <br>
+                    <input type="submit" value="Aceptar" class="btn btn-warning my-2 my-sm-0">
+                </div>
             </form>
-            
         </div>
     </div>
-
-   
 
     <!--Footer-->
     <br>
@@ -87,5 +66,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 </body>
