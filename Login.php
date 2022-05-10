@@ -43,9 +43,6 @@
         
     </div>
     
-    <div>
-
-    
     <div class="formu border border-warning rounded-lg" >
         <div class="formu">
             <h1>Iniciar sesion</h1>
