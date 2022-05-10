@@ -41,16 +41,15 @@
 
         <!--Formulario-->
         <div id="formulario">
-            <form action="registrosCheck.php" class="contenedor">
+            <form action="registrosCheck.php" class="contenedor" method="post">
                 <div id="formdatos" class="form-group"> 
                     <label for="correo">Correo:</label><br>
                     <input type="text" id="correo" name="correo" required><br>                  
-                    <label for="pass">Contraseña:</label>
-                    <p class="text-muted"><small>Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres</small></p>
+                    <label for="pass">Contraseña:</label><br>
+                    <small class="text-muted">Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres</small>
                     <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
                     <label for="pass">Repite la contraseña:</label><br>
-                    <input type="password" id="pass2" name="passC" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
-                    <br>
+                    <input type="password" id="pass2" name="passC" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br><br>
                     <input type="submit" value="Aceptar" class="btn btn-warning my-2 my-sm-0">
                 </div>
             </form>
