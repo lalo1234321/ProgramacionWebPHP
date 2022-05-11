@@ -91,14 +91,14 @@
 			</div> <!-- .item -->	
 
 		  	<?php
-				if( $tipoDeRol == "admin" ) {?>
+				if( $tipoDeRol == "escritor" ) {?>
 					<div class="media-29101 d-md-flex w-100">
 						<div class="img">
 							<img src="https://odontosistemas.files.wordpress.com/2013/04/lectura.jpg" alt="Image" class="img-fluid">
 						</div>
 						<div class="text">
 							<a class="category d-block mb-4" href="#">Crear un nuevo artículo</a>
-							<h2><a href="#">Crea un nuevo artículo para que los demás usuarios puedan leerlo y opinar</a></h2>
+							<h2><a data-toggle="modal" data-target="#createModal">Crea un nuevo artículo para que los demás usuarios puedan leerlo y opinar</a></h2>
 							<!-- <p>Crea un nuevo artículo para que los demás usuarios puedan leerlo y opinar</p> -->
 						</div>
 					</div> <!-- .item -->
@@ -205,9 +205,68 @@
     </div>
 </div>
 
+		<!-- Modal creaciion -->
+	<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear un nuevo artículo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				
+                <form action="articulosPorFiltro.php" method="post">
+                    <div class="form-group">
+			
+                        <label for="exampleFormControlSelect1">Seleccione una década</label>
+                        <select class="form-control" id="decadaSeleccionada" name = "decada">
+                            
+                                <option >40</option>
+								<option >50</option>
+								<option >60</option>
+								<option >70</option>
+								<option >80</option>
+								<option >90</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Escriba el área de la física</label>
+                        <input type="text" value = "Óptica" name = "subcat">
+                    </div>
+					<div class="form-group">
+                        <label for="exampleFormControlSelect1">Escriba el contenido del artículo</label>
+                        <textarea name="articleContent" rows="10" cols="40">Escribe aquí tu contenido</textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" >Crear</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 		<script>
 		$('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                //var recipient = button.data('whatever') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                //var array = recipient.split(',');
+                var modal = $(this)
+                // modal.find('.modal-title').text('Editar el producto: ' + array[0])
+                // modal.find('.modal-body input.idProd').val(array[0])
+                // modal.find('.modal-body input.nombre').val(array[1])
+                // modal.find('.modal-body input.descripcion').val(array[2])
+                // modal.find('.modal-body input.precio').val(array[3])
+
+		});
+		$('#createModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 //var recipient = button.data('whatever') // Extract info from data-* attributes
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
