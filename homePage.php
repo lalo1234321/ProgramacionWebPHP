@@ -130,7 +130,7 @@
 						</div>
 						<div class="text">
 							<a class="category d-block mb-4" href="#">Eliminar un artículo</a>
-							<h2><a href="#">Selecciona esta opción para eliminar uno de los artículos que publicaste</a></h2>
+							<h2><a data-toggle="modal" data-target="#deleteModal">Selecciona esta opción para eliminar uno de los artículos que publicaste</a></h2>
 							<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fuga optio dolorem, fugit voluptates sint ducimus praesentium iste!</p> -->
 						</div>
 					</div> <!-- .item -->	
@@ -267,7 +267,7 @@
 			
                         <label for="exampleFormControlSelect1">Escriba el id de su artículo</label>
                         <div class="form-group">
-						<label>User Id</label>
+						
 						<input type='text' name="id_articulo" 
 							id='articleId' class='form-control'
 							placeholder='Ingrese el id de su artículo'
@@ -289,7 +289,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Escriba el área de la física</label>
-                        <input type="text" value = "hola" name = "subcat" id = "subCategoria1">
+                        <input type="text" value = "" name = "subcat" id = "subCategoria1">
                     </div>
 					<div class="form-group">
                         <label for="exampleFormControlSelect1">Escriba el contenido del artículo</label>
@@ -298,6 +298,49 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary" >Editar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        		<!-- Modal eliminar -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Elimine un articulo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				
+                <form action="delete.php" method="post">
+                    <div class="form-group">
+					<label for="exampleFormControlSelect1">Selecciones el id del articulo a  eliminar</label>
+						<select class="form-control" id="idArticuloSeleccionado" name = "idArticle">
+                            <?php
+							include "conexionBase.php";
+							session_start();
+							$idUsuario = $_SESSION["id_usuario"];
+                            $sql = "SELECT * from articulos where id_Escritor = $idUsuario";
+                            $result = mysqli_query($db, $sql);
+                            while ($hola = mysqli_fetch_array($result)) { ?>
+                                <option ><?php echo $hola["id_Articulo"] ?></option>
+                            <?php } ?>
+                        </select>
+                        
+                        <div class="form-group">
+						
+						
+					</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" >Eliminar</button>
                     </div>
                 </form>
             </div>
@@ -350,6 +393,20 @@
                 // modal.find('.modal-body input.precio').val(array[3])
 
 		});
+		$('#deleteModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                //var recipient = button.data('whatever') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                //var array = recipient.split(',');
+                var modal = $(this)
+                // modal.find('.modal-title').text('Editar el producto: ' + array[0])
+                // modal.find('.modal-body input.idProd').val(array[0])
+                // modal.find('.modal-body input.nombre').val(array[1])
+                // modal.find('.modal-body input.descripcion').val(array[2])
+                // modal.find('.modal-body input.precio').val(array[3])
+
+		});
 		function fillFields(str) {
             if (str.length == 0) {
 				//console.log("eNTRÉ");
@@ -378,13 +435,13 @@
                         // a variable assign the value 
                         // received to first name input field
                           
-                        document.getElementById
+                        document.getElementsById
                             ("subCategoria1").value = myObj[0];
                           
                         // Assign the value received to
                         // last name input field
 
-                        document.getElementById("content1").value = myObj[1];
+                        document.getElementsById("content1").value = myObj[1];
                     }
                 };
   
