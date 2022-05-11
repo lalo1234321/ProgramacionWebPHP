@@ -19,9 +19,10 @@
         margin: 0 auto;
     }
     .contenedor {
-                  
         display: flex;
         justify-content: center;
+    }
+    .error {color: #FF0000;
     }
     </style>
 </head>
@@ -32,29 +33,81 @@
     <br>
 
     <!--Cuerpo-->
-    <div >    
-    </div>
-    <div class="formu border border-warning rounded-lg" >
+    <!--<div class="formu border border-warning rounded-lg" >
         <div class="formu">
-            <h1>Resgístrate</h1>            
-        </div>
+            <h2>Resgístrate</h2>            
+        </div>-->
 
         <!--Formulario-->
-        <div id="formulario">
+        <!--<div id="formulario">
             <form action="registrosCheck.php" class="contenedor" method="post">
                 <div id="formdatos" class="form-group"> 
                     <label for="correo">Correo:</label><br>
-                    <input type="text" id="correo" name="correo" required><br>                  
+                    <input type="text" id="correo" name="email" required><br>                  
                     <label for="pass">Contraseña:</label><br>
                     <small class="text-muted">Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres</small>
-                    <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
+                    <input type="password" id="pass1" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{6,}" required><br>
                     <label for="pass">Repite la contraseña:</label><br>
-                    <input type="password" id="pass2" name="passC" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br><br>
+                    <input type="password" id="pass2" name="passC" pattern="(?=.*\d)(?=.*[A-Z]).{6,}" required><br><br>
                     <input type="submit" value="Aceptar" class="btn btn-warning my-2 my-sm-0">
                 </div>
             </form>
         </div>
+    </div>-->
+
+    <?php
+        $emailErr = $passwordErr = $password2Err = "";
+        $email = $password = $password2 = "";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST["email"])) {
+                $emailErr = "Correo es requerido";
+            } else {
+                $email = test_input($_POST["email"]);
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = "El formato de correo no es válido";
+                }
+            }
+        }
+
+        function test_input($data){
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+    ?>
+
+    <div class="formu border border-warning rounded-lg">
+        <div class="formu">
+            <h2>Regístrate</h2>
+        </div>
+
+        <div id="formulario">
+            <span class="error">* campo requerido</span>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                <div class="form-group">
+                    Correo: <br><input type="text" name="email" value="<?php echo $email;?>" required>
+                    <span class="error">* <?php echo $emailErr;?></span>
+                    <br><br>
+
+                    Contraseña: <br><input type="password" name="password" pattern="(?=.*\d)(?=.*[A-Z]).{6,}" value="<?php echo $password;?>" required>
+                    <span class="error">* <?php echo $passwordErr;?></span>
+                    <br><br>
+
+                    Confirma contraseña: <br><input type="password" name="password2" pattern="(?=.*\d)(?=.*[A-Z]).{6,}" value="<?php echo $password2;?>" required>
+                    <span class="error">* <?php echo $password2Err;?></span>
+                    <br><br>
+                    <input type="submit" name="submit" value="Aceptar" class="btn btn-warning my-2 my-sm-0">
+                </div>
+            </form>
+        </div>
+        
     </div>
+
+    
+
+
 
     <!--Footer-->
     <br>
