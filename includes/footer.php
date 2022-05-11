@@ -19,6 +19,7 @@
             </div>
             <div class="ml-auto">
               <a href="#" class="btn btn-dark rounded-0 py-3 px-5">Registrate</a>
+              <a href="Login.php"></a>
             </div>
           </div>
           <div class="row">
