@@ -147,42 +147,54 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Búsqueda</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="update.php" method="post">
+				<form action="Articulos/escritores.php" >
+					<div class="form-group">
+						<label for="">Haga click en el botón para leer artículos sin filtros</label>
+						<br>
+						<input type="submit" value="Consultar">
+					</div>
+				</form>
+                <form action="articulosPorFiltro.php" method="post">
                     <div class="form-group">
+						<div style="text-align: center">
+						<label for="" >o</label>
+						</div>
+						
+						<br>
                         <label for="exampleFormControlSelect1">Selecciona una década</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control" id="decadaSeleccionada" name = "decada">
                             <?php
                             include "conexionBase.php";
                             $sql = "SELECT distinct decada from articulos";
                             $result = mysqli_query($db, $sql);
 
                             while ($hola = mysqli_fetch_array($result)) { ?>
-                                <option><?php echo $hola["decada"] ?></option>
+                                <option ><?php echo $hola["decada"] ?></option>
                             <?php } ?>
 
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Selecciona un subgénero</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <label for="exampleFormControlSelect1">Selecciona una área de la física</label>
+                        <select class="form-control" id="subcategoriaSeleccionada" name = "subcat">
                             <?php
                             include "conexionBase.php";
                             $sql = "SELECT distinct Subcategoria from articulos";
                             $result = mysqli_query($db, $sql);
                             while ($hola = mysqli_fetch_array($result)) { ?>
-                                <option><?php echo $hola["Subcategoria"] ?></option>
+                                <option ><?php echo $hola["Subcategoria"] ?></option>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="submit" class="btn btn-primary" onclick="obtainFilter()">Buscar</button>
                     </div>
                 </form>
             </div>
@@ -206,7 +218,14 @@
                 // modal.find('.modal-body input.descripcion').val(array[2])
                 // modal.find('.modal-body input.precio').val(array[3])
 
-            });
+		});
+
+		
+		let obtainFilter = () => {
+			let subcategoria = $( "#subcategoriaSeleccionada option:selected" ).text();
+			let decada = $( "#decadaSeleccionada option:selected" ).text();
+			console.log(subcategoria +'   ' +  decada);
+		}
 	</script>
 	<div style = "padding-bottom: 200px"></div>				
 	<script src="js/jquery-3.3.1.min.js"></script>

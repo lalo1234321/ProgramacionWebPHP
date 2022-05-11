@@ -3,7 +3,7 @@
 $servidor = "localhost";
 $usuarioBD = "root";
 $pwdBD = "";
-$nomBD = "basedatos";
+$nomBD = "examenu5";
 
 
 $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
@@ -12,7 +12,7 @@ $correo = $_GET["correo"];
 $password = $_GET["pass"];
 
 
-$sql = "SELECT id_usuario,password,rol,correo  from usuarioss where correo='" . $correo . "'";
+$sql = "SELECT id_usuario,password,rol,correo  from usuarios where correo='" . $correo . "'";
 $result = mysqli_query($db, $sql);
 $numero_filas = mysqli_num_rows($result);
 

@@ -25,6 +25,7 @@ $query = mysqli_query($bd, "SELECT * FROM escritores");
     <title>Paginación</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="./includes/header.css">
 </head>
 <body>
     <div class="container">
