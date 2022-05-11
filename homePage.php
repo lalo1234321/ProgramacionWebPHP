@@ -250,6 +250,51 @@
     </div>
 </div>
 
+		<!-- Modal edicion -->
+		<!-- <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear un nuevo artículo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				
+                <form action="createArticle.php" method="post">
+                    <div class="form-group">
+			
+                        <label for="exampleFormControlSelect1">Seleccione una década</label>
+                        <select class="form-control" id="decadaSeleccionada" name = "decada">
+                            
+                                <option >40</option>
+								<option >50</option>
+								<option >60</option>
+								<option >70</option>
+								<option >80</option>
+								<option >90</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Escriba el área de la física</label>
+                        <input type="text" value = "Óptica" name = "subcat">
+                    </div>
+					<div class="form-group">
+                        <label for="exampleFormControlSelect1">Escriba el contenido del artículo</label>
+                        <textarea name="articleContent" rows="10" cols="40">Escribe aquí tu contenido</textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" >Crear</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
 
 		<script>
 		$('#exampleModal').on('show.bs.modal', function (event) {

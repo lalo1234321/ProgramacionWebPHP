@@ -18,15 +18,15 @@
     // $result = mysqli_query($db, $sql);
     
     if(mysqli_query($db, $sql) == 1) {
-        header("location:homePage.php");
+        //header("location:homePage.php");
     } else {
         echo "Ha ocurrido un error";
     }
-    if ($db->query($sql) === TRUE) {
-      echo "Registro actualizado correctamente";
-    } else {
-      echo "Ha ocurrido un error: " . $db->error;
-    }
+    // if ($db->query($sql) === TRUE) {
+    //   echo "Registro actualizado correctamente";
+    // } else {
+    //   echo "Ha ocurrido un error: " . $db->error;
+    // }
     
     mysqli_close($db);
 
