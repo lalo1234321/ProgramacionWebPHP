@@ -48,6 +48,10 @@ h2 {
   .owl-1 .owl-nav .owl-prev {
     left: 20px; }
 
+.center{
+  text-align: center;
+}
+
 .owl-1 .owl-dots {
   position: absolute;
   bottom: 40px;
