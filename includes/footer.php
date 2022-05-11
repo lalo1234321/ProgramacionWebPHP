@@ -33,14 +33,14 @@
             <div class="col-sm">
               <h3>Desarrolladores</h3>
               <ul class="list-unstyled links">
-                <li><a href="#">Acerca de nosotros</a></li>
+                <li><a href="desarrolladores.php">Acerca de nosotros</a></li>
                 
               </ul>
             </div>
             <div class="col-sm">
               <h3>Información adicional</h3>
               <ul class="list-unstyled links">
-                <li><a href="#">Términos &amp; Condiciones</a></li>
+                <li><a href="terminos.php">Términos &amp; Condiciones</a></li>
                 
               </ul>
             </div>
