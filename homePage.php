@@ -435,13 +435,13 @@
                         // a variable assign the value 
                         // received to first name input field
                           
-                        document.getElementsById
+                        document.getElementById
                             ("subCategoria1").value = myObj[0];
                           
                         // Assign the value received to
                         // last name input field
 
-                        document.getElementsById("content1").value = myObj[1];
+                        document.getElementById("content1").value = myObj[1];
                     }
                 };
   
