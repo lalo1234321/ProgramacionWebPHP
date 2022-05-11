@@ -2,23 +2,19 @@
     include "conexionBase.php";
 
 
-    session_start();
-    $id = $_SESSION["id_usuario"];
-    echo $id;
     
-    $subcat = $_POST["subcat"];
-    $decada = $_POST["decada"];
-    $contenido = $_POST["articleContent"];
-    echo $subcat;
-    echo $decada;
-    echo $contenido;
-    $sql = "INSERT INTO articulos (id_Escritor,Subcategoria,contenido,decada) VALUES ($id, '$subcat', '$contenido', $decada)";
+    
+    $correo = $_POST["correo"];
+    $password = $_POST["pass"];
+    $rol = $_POST["rol"];
+    $sql = "INSERT INTO usuarios (correo,password,rol) VALUES ( '$correo', '$password', '$rol')";
     // $sql = "UPDATE Producto SET nombre = view, descripcion = test, precio = 10000 WHERE id_producto = ". 1;
     
     // $result = mysqli_query($db, $sql);
     
     if(mysqli_query($db, $sql) == 1) {
-        header("location:homePage.php");
+
+        header("location:Login.php");
     } else {
         echo "Ha ocurrido un error";
     }
