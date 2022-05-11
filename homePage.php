@@ -217,7 +217,7 @@
             </div>
             <div class="modal-body">
 				
-                <form action="articulosPorFiltro.php" method="post">
+                <form action="createArticle.php" method="post">
                     <div class="form-group">
 			
                         <label for="exampleFormControlSelect1">Seleccione una década</label>
