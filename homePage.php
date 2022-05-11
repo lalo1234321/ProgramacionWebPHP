@@ -37,7 +37,7 @@
 <body>
         <?php
         	require_once 'includes/header.php';
-		$tipoDeRol = "lector";	
+		$tipoDeRol = "admin";	
         ?>
 	
 
@@ -83,7 +83,7 @@
 				</div>
 				<div class="text">
 					<a class="category d-block mb-4" href="#">Leer un artículo</a>
-					<h2><a href="#">Encuentra un artículo de tu interés</a></h2>
+					<h2><a data-toggle="modal" data-target="#exampleModal">Encuentra un artículo de tu interés</a></h2>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fuga optio dolorem, fugit voluptates sint ducimus praesentium iste!</p> -->
 				</div>
 			</div> <!-- .item -->	
@@ -140,8 +140,74 @@
 		  	</div>
 		</div>
 	</div>
-		
-		
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="update.php" method="post">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Selecciona una década</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <?php
+                            include "conexionBase.php";
+                            $sql = "SELECT distinct decada from articulos";
+                            $result = mysqli_query($db, $sql);
+
+                            while ($hola = mysqli_fetch_array($result)) { ?>
+                                <option><?php echo $hola["decada"] ?></option>
+                            <?php } ?>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Selecciona un subgénero</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <?php
+                            include "conexionBase.php";
+                            $sql = "SELECT distinct Subcategoria from articulos";
+                            $result = mysqli_query($db, $sql);
+                            while ($hola = mysqli_fetch_array($result)) { ?>
+                                <option><?php echo $hola["Subcategoria"] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+		<script>
+		$('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                //var recipient = button.data('whatever') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                //var array = recipient.split(',');
+                var modal = $(this)
+                // modal.find('.modal-title').text('Editar el producto: ' + array[0])
+                // modal.find('.modal-body input.idProd').val(array[0])
+                // modal.find('.modal-body input.nombre').val(array[1])
+                // modal.find('.modal-body input.descripcion').val(array[2])
+                // modal.find('.modal-body input.precio').val(array[3])
+
+            });
+	</script>
 	<div style = "padding-bottom: 200px"></div>				
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -151,5 +217,7 @@
 	<?php
         require_once 'includes/footer.php';
         ?>
+	
+
 </body>
 </html>
