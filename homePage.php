@@ -36,8 +36,10 @@
 </head>
 <body>
         <?php
+			session_start();
+			$tipoDeRol = $_SESSION["info"]["rol"];
+			//echo $tipoDeRol;
         	require_once 'includes/header.php';
-		$tipoDeRol = "admin";	
         ?>
 	
 
@@ -52,7 +54,7 @@
 			<a href="#" class="col active">Lectura</a>
 		    	<?php
 				?>
-				<?php if( $tipoDeRol == "admin" )  {?>
+				<?php if( $tipoDeRol == "escritor" )  {?>
 					<a href="#" class="col">Creación</a>
 				<?php
 			}?>
@@ -60,14 +62,14 @@
 			
 			<?php
 				?>
-				<?php if( $tipoDeRol == "admin" )  {?>
+				<?php if( $tipoDeRol == "escritor" )  {?>
 					<a href="#" class="col">Edición</a>
 				<?php
 			}?>
 			
 			<?php
 				?>
-				<?php if( $tipoDeRol == "admin" )  {?>
+				<?php if( $tipoDeRol == "escritor" )  {?>
 					<a href="#" class="col">Eliminar</a>
 				<?php
 			}?>
@@ -105,7 +107,7 @@
 			
 			
 			<?php
-				if( $tipoDeRol == "admin" ) {?>
+				if( $tipoDeRol == "escritor" ) {?>
 					<div class="media-29101 d-md-flex w-100">
 						<div class="img">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlZJyJncMTFCu7hor7Eeo3iVO80nmEcTl-NA&usqp=CAU" alt="Image" class="img-fluid">
@@ -121,7 +123,7 @@
 		    
 	    
 		    	<?php
-				if( $tipoDeRol == "admin" ) {?>
+				if( $tipoDeRol == "escritor" ) {?>
 					<div class="media-29101 d-md-flex w-100">
 						<div class="img">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWrxg5QHovPGKMe_PMicz3hqi1gwHi-bo5FQ&usqp=CAU" alt="Image" class="img-fluid" style = "height:370">

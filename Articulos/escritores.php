@@ -11,7 +11,7 @@ if (!$bd) {
     mysqli_query($bd, "SET NAMES 'UTF8'");
 }
 
-$query = mysqli_query($bd, "SELECT * FROM escritores");
+$query = mysqli_query($bd, "SELECT * FROM usuarios where rol = 'escritor'");
 
 ?>
 
@@ -36,13 +36,13 @@ $query = mysqli_query($bd, "SELECT * FROM escritores");
         
         ?>
         
-        <a  href="articulos.php?id=<?php echo $row['id_Escritor'] ?>" style="text-decoration: none;">
+        <a  href="articulos.php?id=<?php echo $row['id_usuario'] ?>" style="text-decoration: none;">
             <div class="card">
                 <div class="card-image"><img src="imagenes/atomo2.png" alt="Imagen"></div>
                 <div class="card-info">
-                <h3><?php echo $row['nombre']; ?></h3>
-                <h3><?php echo $row['Ap_paterno']; ?></h3>
-                <h3><?php echo $row['Ap_materno']; ?></h3>
+                <h3><?php echo $row['correo']; ?></h3>
+                <!-- <h3><?php echo $row['Ap_paterno']; ?></h3>
+                <h3><?php echo $row['Ap_materno']; ?></h3> -->
                 </div>
         </a>
         </div>
