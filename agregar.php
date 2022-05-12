@@ -24,7 +24,3 @@
     // }
     
     mysqli_close($db);
-
-
-
-?>

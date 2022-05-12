@@ -14,14 +14,14 @@ if (!$bd) {
 }
 
 $query = mysqli_query($bd, "SELECT * FROM articulos where Subcategoria= '$subcat' and decada = $decada");
-if(empty($query)){
-	header("Location: homePage.php");
+if (empty($query)) {
+    header("Location: homePage.php");
 }
 $idarticulo = mysqli_query($bd, "SELECT id_Articulo FROM articulos where Subcategoria= '$subcat' and decada = $decada");
 $mostrarid = mysqli_fetch_array($idarticulo);
-$id_articulo = $mostrarid['id_Articulo'];//EL ID ARTICULO
+$id_articulo = $mostrarid['id_Articulo']; //EL ID ARTICULO
 $id = $_SESSION["id_usuario"];
-$comens = mysqli_query($bd, "SELECT C.id_Articulo, U.correo, C.comentar from usuarios U, comentarios C, articulos A where A.id_Articulo=c.id_Articulo AND U.id_usuario=C.id_usuario");//comentario ensear
+$comens = mysqli_query($bd, "SELECT C.id_Articulo, U.correo, C.comentar from usuarios U, comentarios C, articulos A where A.id_Articulo=c.id_Articulo AND U.id_usuario=C.id_usuario"); //comentario ensear
 
 ?>
 
@@ -39,16 +39,16 @@ $comens = mysqli_query($bd, "SELECT C.id_Articulo, U.correo, C.comentar from usu
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./includes/header.css">
-	<link rel="stylesheet" href="./Articulos/estilos.css">
+    <link rel="stylesheet" href="./Articulos/estilos.css">
     <link rel="stylesheet" href="css/est.css">
-	<style>
-    #scroll {
-        border: 0px solid;
-        height: 600px;
-        width: 1084px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
+    <style>
+        #scroll {
+            border: 0px solid;
+            height: 600px;
+            width: 1084px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
     </style>
 </head>
 
@@ -78,38 +78,36 @@ $comens = mysqli_query($bd, "SELECT C.id_Articulo, U.correo, C.comentar from usu
                 echo "<br>";
             }
     ?>
-  <div class="containera" >
-            <div class="row comentarios justify-content-center">
-                <div class="col-6">
-                    <form method="post" action="agregar.php"
-                        class="form_comentarios d-flex justify-content-end flex-wrap">
-                        <input name="idareasu" id="" type="hidden" value="<?php echo $id;?>"></input>
-                        <input name="idareaar" id="" type="hidden" value="<?php echo $id_articulo;?>"></input>
-                        <input name="ida1" id="" type="hidden" value="<?php echo $decada;?>"></input>
-                        <input name="ida2" id="" type="hidden" value="<?php echo $subcat;?>"></input>
-                        <textarea name="area" id="" placeholder="Comentario"
-                            style="width: 1080px; height: 64px;"></textarea>
-                        <button class="btna" type="submit">Comentar</button>
-                    </form>
-                    <div id="scroll">
-                            <?php
+    <div class="containera">
+        <div class="row comentarios justify-content-center">
+            <div class="col-6">
+                <form method="post" action="agregar.php" class="form_comentarios d-flex justify-content-end flex-wrap">
+                    <input name="idareasu" id="" type="hidden" value="<?php echo $id; ?>"></input>
+                    <input name="idareaar" id="" type="hidden" value="<?php echo $id_articulo; ?>"></input>
+                    <input name="ida1" id="" type="hidden" value="<?php echo $decada; ?>"></input>
+                    <input name="ida2" id="" type="hidden" value="<?php echo $subcat; ?>"></input>
+                    <textarea name="area" id="" placeholder="Comentario" style="width: 1080px; height: 64px;"></textarea>
+                    <button class="btna" type="submit">Comentar</button>
+                </form>
+                <div id="scroll">
+                    <?php
                     while ($r = mysqli_fetch_array($comens)) {
-                        if($id_articulo==$r['id_Articulo']){
+                        if ($id_articulo == $r['id_Articulo']) {
                     ?>
                             <div class=" media">
 
                                 <img src="Articulos/imagenes/atomo2.png" width="64" height="64" alt="">
                                 <div class="media-body">
                                     <a class="nombre">
-                                        <?php echo $r['correo'];?>
+                                        <?php echo $r['correo']; ?>
                                     </a>
                                     <p class="comentarios">
                                         <?php echo $r['comentar']; ?>
                                     </p>
                                 </div>
                             </div>
-                            <?php
-                            }
+                    <?php
+                        }
                     }
                     ?>
                 </div>
@@ -206,10 +204,10 @@ $comens = mysqli_query($bd, "SELECT C.id_Articulo, U.correo, C.comentar from usu
             });
         });
     </script>
-	<div style="padding-bottom: 200px;"></div>
+    <div style="padding-bottom: 200px;"></div>
     <?php
-        require_once 'includes/footer.php';
-        ?>
+    require_once 'includes/footer.php';
+    ?>
 
 </body>
 
