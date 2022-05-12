@@ -30,7 +30,6 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./includes/header.css">
     <link rel="stylesheet" href="./Articulos/estilos.css">
-    <link rel="stylesheet" href="css/estilos.css">
 
 </head>
 
