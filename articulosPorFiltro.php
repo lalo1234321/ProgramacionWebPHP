@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $servidor = "localhost";
 $usuario = "root";
 $contra = "";
@@ -7,13 +7,18 @@ $bdnom = "examenu5";
 $bd = mysqli_connect($servidor, $usuario, $contra, $bdnom);
 $decada = $_POST["decada"];
 $subcat = $_POST["subcat"];
+$usuariocorreo = $_SESSION["info"]["user"];
 if (!$bd) {
     die("La conexión falló: " . mysqli_connect_error());
 } else {
     mysqli_query($bd, "SET NAMES 'UTF8'");
 }
-
 $query = mysqli_query($bd, "SELECT * FROM articulos where Subcategoria= '$subcat' and decada = $decada");
+$query1 = mysqli_query($bd, "SELECT * FROM articulos where Subcategoria= '$subcat' and decada = $decada");
+$resu=mysqli_fetch_array($query1);
+$idarticulo=$resu['id_Articulo'];
+$queryusuario = mysqli_query($bd, "SELECT * FROM usuarios");
+$idusuario = $_SESSION["id_usuario"];
 if(empty($query)){
 	header("Location: homePage.php");
 }
@@ -32,9 +37,9 @@ if(empty($query)){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/est.css">
     <link rel="stylesheet" href="./includes/header.css">
 	<link rel="stylesheet" href="./Articulos/estilos.css">
-	
 </head>
 
 <body>
@@ -57,12 +62,41 @@ if(empty($query)){
                             <h3><?php echo $row['Contenido']; ?></h3>
                         </div>
                 </a>
-        </div>
+        </div> 
 
     <?php
                 echo "<br>";
             }
     ?>
+     
+     <div class="containera">
+            <div class="row comentarios justify-content-center">
+                <div class="col-6">
+                    <form method="post" class="form_comentarios d-flex justify-content-end flex-wrap">
+                        <textarea name="area" id="" placeholder="Comentario"></textarea>
+                        <button class="btna" type="button" onclick="insertar()">Comentar</button>
+                    </form>
+                    <div class="media">
+                    <img src="Articulos/imagenes/atomo2.png" width="64" height="64" alt="">
+                    <div class="media-body">
+                            <p class="nombre">luis</p>
+                            <p class="comentarios">dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                asdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd
+                                dasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasas
+                                asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd
+                                asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd
+                            </p>
+                            <div class="botones text-right">
+                            <a href="#">Responder</a>
+                            <a href="#">Editar</a>
+                            <a href="#">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+        </div>
+    </div>
     </div>
     </div>
 
@@ -76,7 +110,7 @@ if(empty($query)){
             <li class="page-item next-page"><a href="#" class="page-link">Next</a></li>-->
     </div>
     </div>
-
+   
     <script type="text/javascript">
         function getPageList(totalPages, page, maxLength) {
             function range(start, end) {

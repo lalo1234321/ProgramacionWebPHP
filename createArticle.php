@@ -18,7 +18,7 @@
     // $result = mysqli_query($db, $sql);
     
     if(mysqli_query($db, $sql) == 1) {
-        header("location:homePage.php");
+        //header("location:homePage.php");
     } else {
         echo "Ha ocurrido un error";
     }

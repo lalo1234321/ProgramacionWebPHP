@@ -114,7 +114,7 @@
 						</div>
 						<div class="text">
 							<a class="category d-block mb-4" href="#">Editar un artículo</a>
-							<h2><a data-toggle="modal" data-target="#editModal">Selecciona esta opción si deseas editar un artículo publicado por tí</a></h2>
+							<h2><a href="#">Selecciona esta opción si deseas editar un artículo publicado por tí</a></h2>
 							<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fuga optio dolorem, fugit voluptates sint ducimus praesentium iste!</p> -->
 						</div>
 					</div> <!-- .item -->
@@ -130,7 +130,7 @@
 						</div>
 						<div class="text">
 							<a class="category d-block mb-4" href="#">Eliminar un artículo</a>
-							<h2><a data-toggle="modal" data-target="#deleteModal">Selecciona esta opción para eliminar uno de los artículos que publicaste</a></h2>
+							<h2><a href="#">Selecciona esta opción para eliminar uno de los artículos que publicaste</a></h2>
 							<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fuga optio dolorem, fugit voluptates sint ducimus praesentium iste!</p> -->
 						</div>
 					</div> <!-- .item -->	
@@ -205,7 +205,7 @@
     </div>
 </div>
 
-		<!-- Modal creacion -->
+		<!-- Modal creaciion -->
 	<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -251,30 +251,19 @@
 </div>
 
 		<!-- Modal edicion -->
-		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<!-- <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edita un articulo</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear un nuevo artículo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 				
-                <form action="update.php" method="post">
+                <form action="createArticle.php" method="post">
                     <div class="form-group">
-			
-                        <label for="exampleFormControlSelect1">Escriba el id de su artículo</label>
-                        <div class="form-group">
-						
-						<input type='text' name="id_articulo" 
-							id='articleId' class='form-control'
-							placeholder='Ingrese el id de su artículo'
-							onkeyup="fillFields(this.value)" value="">
-					</div>
-                    </div>
-					<div class="form-group">
 			
                         <label for="exampleFormControlSelect1">Seleccione una década</label>
                         <select class="form-control" id="decadaSeleccionada" name = "decada">
@@ -289,65 +278,22 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Escriba el área de la física</label>
-                        <input type="text" value = "" name = "subcat" id = "subCategoria1">
+                        <input type="text" value = "Óptica" name = "subcat">
                     </div>
 					<div class="form-group">
                         <label for="exampleFormControlSelect1">Escriba el contenido del artículo</label>
-                        <textarea id = "content1" name="articleContent" rows="10" cols="40"></textarea>
+                        <textarea name="articleContent" rows="10" cols="40">Escribe aquí tu contenido</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" >Editar</button>
+                        <button type="submit" class="btn btn-primary" >Crear</button>
                     </div>
                 </form>
             </div>
 
         </div>
     </div>
-</div>
-
-        		<!-- Modal eliminar -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Elimine un articulo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-				
-                <form action="delete.php" method="post">
-                    <div class="form-group">
-					<label for="exampleFormControlSelect1">Selecciones el id del articulo a  eliminar</label>
-						<select class="form-control" id="idArticuloSeleccionado" name = "idArticle">
-                            <?php
-							include "conexionBase.php";
-							session_start();
-							$idUsuario = $_SESSION["id_usuario"];
-                            $sql = "SELECT * from articulos where id_Escritor = $idUsuario";
-                            $result = mysqli_query($db, $sql);
-                            while ($hola = mysqli_fetch_array($result)) { ?>
-                                <option ><?php echo $hola["id_Articulo"] ?></option>
-                            <?php } ?>
-                        </select>
-                        
-                        <div class="form-group">
-						
-						
-					</div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" >Eliminar</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
+</div> -->
 
 
 		<script>
@@ -379,80 +325,6 @@
                 // modal.find('.modal-body input.precio').val(array[3])
 
 		});
-		$('#editModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                //var recipient = button.data('whatever') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                //var array = recipient.split(',');
-                var modal = $(this)
-                // modal.find('.modal-title').text('Editar el producto: ' + array[0])
-                // modal.find('.modal-body input.idProd').val(array[0])
-                // modal.find('.modal-body input.nombre').val(array[1])
-                // modal.find('.modal-body input.descripcion').val(array[2])
-                // modal.find('.modal-body input.precio').val(array[3])
-
-		});
-		$('#deleteModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                //var recipient = button.data('whatever') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                //var array = recipient.split(',');
-                var modal = $(this)
-                // modal.find('.modal-title').text('Editar el producto: ' + array[0])
-                // modal.find('.modal-body input.idProd').val(array[0])
-                // modal.find('.modal-body input.nombre').val(array[1])
-                // modal.find('.modal-body input.descripcion').val(array[2])
-                // modal.find('.modal-body input.precio').val(array[3])
-
-		});
-		function fillFields(str) {
-            if (str.length == 0) {
-				//console.log("eNTRÉ");
-                document.getElementById("decadaSeleccionada").value = "";
-                document.getElementById("subCategoria1").value = "";
-				document.getElementById("content").value = "";
-                return;
-            }
-            else {
-  
-                // Creates a new XMLHttpRequest object
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
-  
-                    // Defines a function to be called when
-                    // the readyState property changes
-                    if (this.readyState == 4 && 
-                            this.status == 200) {
-                          
-                        // Typical action to be performed
-                        // when the document is ready
-                        var myObj = JSON.parse(this.responseText);
-  
-                        // Returns the response data as a
-                        // string and store this array in
-                        // a variable assign the value 
-                        // received to first name input field
-                          
-                        document.getElementById
-                            ("subCategoria1").value = myObj[0];
-                          
-                        // Assign the value received to
-                        // last name input field
-
-                        document.getElementById("content1").value = myObj[1];
-                    }
-                };
-  
-                // xhttp.open("GET", "filename", true);
-				console.log(str)
-                xmlhttp.open("GET", "getEditData.php?id_usuario="+str, true);
-                  
-                // Sends the request to the server
-                xmlhttp.send();
-            }
-        }
 
 		
 		let obtainFilter = () => {
