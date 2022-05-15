@@ -12,7 +12,7 @@ if (!$bd) {
     mysqli_query($bd, "SET NAMES 'UTF8'");
 }
 
-$query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escritor");
+$query = mysqli_query($bd, "SELECT * FROM articulos where id_usuario = $id_Escritor");
 
 ?>
 
@@ -24,12 +24,12 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paginación</title>
+    <title>Artículos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="./estilos2.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="./includes/header.css">
-    <link rel="stylesheet" href="./Articulos/estilos.css">
+    <link rel="stylesheet" href="includes/header.css">
+    
 
 </head>
 
@@ -37,8 +37,8 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
     <?php
     require_once '../includes/header.php';
     ?>
-    <div class="container" style="background-color: lightblue;">
-        <div class="card-content" style="display:none;">
+    <div class="container2" style="background-color: lightblue;">
+        <div class="card-content2" style="display:none;">
             <?php
             $i = 0;
             while ($row = mysqli_fetch_array($query)) {
@@ -47,10 +47,15 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
                 <a style="text-decoration: none;">
                     <div class="card2">
 
-                        <div class="card-info">
-                            <h3><?php echo $row['Categoria']; ?></h3>
-                            <h3><?php echo $row['Subcategoria']; ?></h3>
-                            <h3><?php echo $row['Contenido']; ?></h3>
+                        <div class="card-info2">
+                            <h3 style="color: blue">Categoría:</h3> <h3> <?php echo $row['Categoria']; ?></h3>
+                            <h3 style="color: blue">Subcategoría: </h3> <h3> <?php echo $row['Subcategoria']; ?></h3>
+                            <h3 style="color: blue">Década: </h3> <h3> <?php echo $row['decada']; ?></h3>
+                            <h3 style="color: blue">Fecha: </h3> <h3> <?php echo $row['Fecha']; ?></h3>
+                            <h3 style="color: blue">Lugar: </h3> <h3> <?php echo $row['Lugar']; ?></h3>
+                            <h3 style="color: blue">Autor: </h3> <h3> <?php echo $row['Autor']; ?></h3>
+                            <h3 style="color: blue">Notas de relevancia: </h3> <h3> <?php echo $row['Contenido']; ?></h3>
+                            <h3 style="color: blue">Premio: </h3> <h3> <?php echo $row['Premio']; ?></h3>
                         </div>
                 </a>
         </div>
@@ -62,7 +67,7 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
     </div>
     </div>
 
-    <div class="pagination">
+    <div class="pagination2">
         <!--<li class="page-item previous-page disable"><a href="#" class="page-link">Prev</a></li>
             <li class="page-item current-page acttive"><a href="#" class="page-link">1</a></li>
             <li class="page-item dots"><a href="#" class="page-link">...</a></li>
@@ -97,8 +102,8 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
         }
 
         $(function() {
-            var numberOfItems = $(".card-content .card").length;
-            var limitPerPage = 1; //limite de items por pagina
+            var numberOfItems = $(".card-content2 .card2").length;
+            var limitPerPage = 2; //limite de items por pagina
             var totalPages = Math.ceil(numberOfItems / limitPerPage);
             var paginationSize = 7; //elementos de pagina visibles en la paginacion
             var currentPage;
@@ -108,50 +113,50 @@ $query = mysqli_query($bd, "SELECT * FROM articulos where id_Escritor = $id_Escr
 
                 currentPage = whichPage;
 
-                $(".card-content .card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+                $(".card-content2 .card2").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
 
-                $(".pagination li").slice(1, -1).remove();
+                $(".pagination2 li").slice(1, -1).remove();
 
                 getPageList(totalPages, currentPage, paginationSize).forEach(item => {
-                    $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
-                        .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
+                    $("<li>").addClass("page-item").addClass(item ? "current-page2" : "dots2")
+                        .toggleClass("active2", item === currentPage).append($("<a>").addClass("page-link")
                             .attr({
                                 href: "javascript:void(0)"
-                            }).text(item || "...")).insertBefore(".next-page");
+                            }).text(item || "...")).insertBefore(".next-page2");
                 });
 
-                $(".previous-page").toggleClass("disable", currentPage === 1);
-                $(".next-page").toggleClass("disable", currentPage === totalPages);
+                $(".previous-page2").toggleClass("disable2", currentPage === 1);
+                $(".next-page2").toggleClass("disable2", currentPage === totalPages);
                 return true;
             }
 
-            $(".pagination").append(
-                $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({
+            $(".pagination2").append(
+                $("<li>").addClass("page-item").addClass("previous-page2").append($("<a>").addClass("page-link").attr({
                     href: "javascript:void(0)"
                 }).text("Prev")),
-                $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({
+                $("<li>").addClass("page-item").addClass("next-page2").append($("<a>").addClass("page-link").attr({
                     href: "javascript:void(0)"
                 }).text("Next"))
             );
 
-            $(".card-content").show();
+            $(".card-content2").show();
             showPage(1);
 
-            $(document).on("click", ".pagination li.current-page:not(.active)", function() {
+            $(document).on("click", ".pagination2 li.current-page2:not(.active2)", function() {
                 return showPage(+$(this).text());
             });
 
-            $(".next-page").on("click", function() {
+            $(".next-page2").on("click", function() {
                 return showPage(currentPage + 1);
             });
 
-            $(".previous-page").on("click", function() {
+            $(".previous-page2").on("click", function() {
                 return showPage(currentPage - 1);
             });
         });
     </script>
     <?php
-    require_once '../includes/footer.php';
+   // require_once '../includes/footer.php';
     ?>
 
 </body>
