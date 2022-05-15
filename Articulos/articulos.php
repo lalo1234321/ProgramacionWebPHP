@@ -12,7 +12,7 @@ if (!$bd) {
     mysqli_query($bd, "SET NAMES 'UTF8'");
 }
 
-$query = mysqli_query($bd, "SELECT * FROM articulos where id_usuario = $id_Escritor");
+$query = mysqli_query($bd, "SELECT * FROM articulos where id_escritor = $id_Escritor");
 
 ?>
 
